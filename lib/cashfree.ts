@@ -50,7 +50,8 @@ export function createOrder(input: {
   orderId: string;
   amount: number;
   customer: { id: string; name: string; phone: string; email?: string };
-  returnUrl: string;
+  /** Only sent when https: Cashfree production rejects http return URLs (e.g. localhost). */
+  returnUrl?: string;
   note?: string;
   tags?: Record<string, string>;
 }) {
@@ -66,7 +67,7 @@ export function createOrder(input: {
         customer_phone: input.customer.phone,
         ...(input.customer.email ? { customer_email: input.customer.email } : {}),
       },
-      order_meta: { return_url: input.returnUrl },
+      ...(input.returnUrl?.startsWith("https://") ? { order_meta: { return_url: input.returnUrl } } : {}),
       order_note: input.note,
       order_tags: input.tags,
     }),

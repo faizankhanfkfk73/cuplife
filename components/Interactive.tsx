@@ -141,7 +141,8 @@ export function Accordion({ items, initial = 0, numbered, className = "" }: {
   );
 }
 
-type CashfreeSDK = { checkout: (o: { paymentSessionId: string; redirectTarget?: "_self" | "_blank" | "_top" }) => Promise<{ error?: { message?: string } }> };
+type CheckoutResult = { error?: { message?: string }; redirect?: boolean; paymentDetails?: { paymentMessage?: string } };
+type CashfreeSDK = { checkout: (o: { paymentSessionId: string; redirectTarget?: "_self" | "_blank" | "_top" | "_modal" }) => Promise<CheckoutResult> };
 declare global { interface Window { Cashfree?: (o: { mode: "production" | "sandbox" }) => CashfreeSDK } }
 
 const CASHFREE_MODE = process.env.NEXT_PUBLIC_CASHFREE_ENV === "sandbox" ? "sandbox" : "production";
@@ -193,8 +194,11 @@ export function RegisterForm() {
       ]);
       const out = await res.json().catch(() => ({}));
       if (!res.ok || !out.paymentSessionId) throw new Error(out.error || "Payment shuru nahi ho saka.");
-      const result = await cashfree.checkout({ paymentSessionId: out.paymentSessionId, redirectTarget: "_self" });
-      if (result?.error) throw new Error(result.error.message || "Payment cancel ho gaya.");
+      // Modal checkout keeps the buyer on this page; once it closes we verify the order server-side.
+      const result = await cashfree.checkout({ paymentSessionId: out.paymentSessionId, redirectTarget: "_modal" });
+      if (result?.redirect) return; // Cashfree is redirecting (some banks); the return URL handles it.
+      if (result?.error && !result.paymentDetails) throw new Error(result.error.message || "Payment cancel ho gaya.");
+      window.location.href = `/payment/status?order_id=${encodeURIComponent(out.orderId)}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Kuch galat ho gaya. Dobara try karein.");
       setBusy(false);
