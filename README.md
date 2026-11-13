@@ -12,7 +12,7 @@ All of these are rebuilt in Phyco's style so the panels line up on one 1200px gr
 ## Content
 All copy is in `content/site.ts`, taken from `3-Day Offline Hijama Training Landing Page Copy.md`.
 
-Fill these in before launch:
+Fill these in before launch (all copy is in English):
 - `WHATSAPP_NUMBER` in `content/site.ts` (every WhatsApp button and the registration form use it)
 - `[INSERT DATE]`, `[INSERT CITY & VENUE]`, `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
 - `COURSE_FEE_INR` in `content/site.ts` (the fee in rupees; it sets the displayed price and the amount Cashfree charges)

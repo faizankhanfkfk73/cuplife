@@ -25,7 +25,7 @@ function siteOrigin(req: NextRequest) {
 export async function POST(req: NextRequest) {
   // The amount is decided here on the server, never taken from the browser.
   if (!COURSE_FEE_INR || COURSE_FEE_INR <= 0) {
-    return NextResponse.json({ error: "Online payment abhi available nahi hai. Kripya WhatsApp par register karein." }, { status: 503 });
+    return NextResponse.json({ error: "Online payment is not available right now. Please register on WhatsApp." }, { status: 503 });
   }
 
   const body = await req.json().catch(() => null);
@@ -35,9 +35,9 @@ export async function POST(req: NextRequest) {
   const email = clean(body?.email, 120);
   const phone = normalisePhone(clean(body?.phone, 20));
 
-  if (name.length < 2) return NextResponse.json({ error: "Kripya apna poora naam likhein." }, { status: 400 });
-  if (!phone) return NextResponse.json({ error: "Kripya sahi 10-digit mobile number likhein." }, { status: 400 });
-  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Email address sahi nahi lag raha." }, { status: 400 });
+  if (name.length < 2) return NextResponse.json({ error: "Please enter your full name." }, { status: 400 });
+  if (!phone) return NextResponse.json({ error: "Please enter a valid 10-digit mobile number." }, { status: 400 });
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "That email address doesn't look right." }, { status: 400 });
 
   const orderId = `CH_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
   try {
@@ -53,6 +53,6 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     const status = err instanceof CashfreeError ? err.status : 500;
     console.error("[cashfree] create order failed", status, err instanceof Error ? err.message : err);
-    return NextResponse.json({ error: "Payment shuru nahi ho saka. Thodi der baad try karein ya WhatsApp par register karein." }, { status: 502 });
+    return NextResponse.json({ error: "We couldn't start the payment. Please try again shortly or register on WhatsApp." }, { status: 502 });
   }
 }

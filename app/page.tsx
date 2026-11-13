@@ -60,7 +60,7 @@ export default function Home() {
             </div>
             <Reveal className="q-close">
               <p>{questions.close}</p>
-              <Btn href="#curriculum">Dekhiye Curriculum</Btn>
+              <Btn href="#curriculum">See the Curriculum</Btn>
             </Reveal>
           </div>
         </section>
@@ -99,8 +99,8 @@ export default function Home() {
           <div className="container">
             <Reveal className="head center">
               <Tag>3-Day Curriculum</Tag>
-              <h2 className="h2">3 Days mein kya seekhenge?</h2>
-              <p className="lead">Har din ka ek clear focus — fundamentals se anatomy, aur phir supervised practical workflow tak.</p>
+              <h2 className="h2">What will you learn in 3 days?</h2>
+              <p className="lead">Each day has a clear focus — from fundamentals to anatomy, and then the supervised practical workflow.</p>
             </Reveal>
             <Reveal><DayTabs days={days} /></Reveal>
           </div>
@@ -136,11 +136,11 @@ export default function Home() {
               <p className="lead">{selfEmployment.body}</p>
             </Reveal>
             <Reveal className="mosaic">
-              <div className="tile olive-t"><Icon name="briefcase" className="ico" /><h3>Service ko professionally structure kijiye</h3><p>Home-visit model, packages aur pricing ka basic framework.</p></div>
+              <div className="tile olive-t"><Icon name="briefcase" className="ico" /><h3>Structure your service professionally</h3><p>The home-visit model, packages and a basic pricing framework.</p></div>
               <div className="tile tall"><img src="/assets/images/hijama-training.jpg" alt="Hands-on Hijama training in a therapy room" /></div>
               <div className="tile"><img src="/assets/images/hijama-treatment.jpg" alt="Cupping session on a client's back" /></div>
               <div className="tile"><img src="/assets/images/hijama-equipment.jpg" alt="Hijama equipment set" /></div>
-              <div className="tile butter-t"><Icon name="users" className="ico" /><h3>Clients, referrals aur repeat bookings</h3><p>WhatsApp, Instagram aur local marketing se lead ko booking mein convert karna.</p></div>
+              <div className="tile butter-t"><Icon name="users" className="ico" /><h3>Clients, referrals and repeat bookings</h3><p>Converting leads into bookings with WhatsApp, Instagram and local marketing.</p></div>
             </Reveal>
             <Reveal><p className="lead" style={{ marginTop: 56 }}>{selfEmployment.lead}</p></Reveal>
             <ol className="se-list" style={{ marginTop: 16 }}>
@@ -200,8 +200,8 @@ export default function Home() {
         <section className="section">
           <div className="container">
             <Reveal className="head split">
-              <div><Tag>What You Get</Tag><h2 className="h2">Course mein aapko kya milega?</h2></div>
-              <p className="lead">Training, practice, guidance aur support — sab ek structured offline program mein.</p>
+              <div><Tag>What You Get</Tag><h2 className="h2">What do you get in the course?</h2></div>
+              <p className="lead">Training, practice, guidance and support — all in one structured offline program.</p>
             </Reveal>
             <ul className="inc-grid">
               {includes.map((i, k) => <Reveal as="li" key={i} delay={(k % 3) * 60}><Icon name="checkCircle" />{i}</Reveal>)}
@@ -223,7 +223,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="head center">
               <Tag>Who It&apos;s For</Tag>
-              <h2 className="h2">Ye course kiske liye hai?</h2>
+              <h2 className="h2">Who is this course for?</h2>
             </Reveal>
             <div className="aud-grid">
               {audience.map((a, k) => (
@@ -263,7 +263,7 @@ export default function Home() {
           <div className="container">
             <Reveal className="head split">
               <div><Tag>Why Choose Us</Tag><h2 className="h2">Why choose this training?</h2></div>
-              <p className="lead">Face-to-face learning, practical focus aur safety-first approach — limited batch ke saath.</p>
+              <p className="lead">Face-to-face learning, a practical focus and a safety-first approach — in a limited batch.</p>
             </Reveal>
             <div className="why-grid">
               {reasons.map((r, k) => (
@@ -299,7 +299,7 @@ export default function Home() {
                     <dd>Hindi / Hinglish</dd>
                   </div>
                 </dl>
-                <p className="details-note"><Icon name="shield" />Course completion certificate medical license ya independent practice authorization nahi hai — neeche disclaimer padhein.</p>
+                <p className="details-note"><Icon name="shield" />The course completion certificate is not a medical license or authorization for independent practice — please read the disclaimer below.</p>
               </Reveal>
               <Reveal delay={120} className="fee-card">
                 <span className="badge">{fee.label}</span>
@@ -388,7 +388,7 @@ export default function Home() {
           <div className="foot-grid">
             <div className="about-f">
               <a href="#top" className="logo"><Logo /><b>Cupheal</b></a>
-              <p>3-Day Offline Hijama Training Program — practical training, real guidance, aur safety-first learning.</p>
+              <p>3-Day Offline Hijama Training Program — practical training, real guidance and safety-first learning.</p>
             </div>
             <div>
               <h4>Program</h4>
@@ -413,7 +413,7 @@ export default function Home() {
           </div>
           <div className="foot-bottom">
             <span>© {new Date().getFullYear()} Cupheal. All Rights Reserved.</span>
-            <span>Course certificate medical license ya practice authorization nahi hai.</span>
+            <span>The course certificate is not a medical license or practice authorization.</span>
           </div>
         </div>
       </footer>

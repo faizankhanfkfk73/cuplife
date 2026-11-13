@@ -176,7 +176,7 @@ export function RegisterForm() {
     // Until a fee is set, registration falls back to WhatsApp.
     if (!payOnline) {
       const msg = [
-        "Assalamu Alaikum, mujhe 3-Day Offline Hijama Training mein seat reserve karni hai.",
+        "Assalamu Alaikum, I would like to reserve a seat in the 3-Day Offline Hijama Training.",
         `Name: ${data.name}`, `Phone: ${data.phone}`, `City: ${data.city}`, `Background: ${data.bg}`,
       ].join("\n");
       window.open(whatsappLink(msg), "_blank", "noopener,noreferrer");
@@ -193,25 +193,25 @@ export function RegisterForm() {
         fetch("/api/cashfree/order", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
       ]);
       const out = await res.json().catch(() => ({}));
-      if (!res.ok || !out.paymentSessionId) throw new Error(out.error || "Payment shuru nahi ho saka.");
+      if (!res.ok || !out.paymentSessionId) throw new Error(out.error || "Could not start the payment.");
       // Modal checkout keeps the buyer on this page; once it closes we verify the order server-side.
       const result = await cashfree.checkout({ paymentSessionId: out.paymentSessionId, redirectTarget: "_modal" });
       if (result?.redirect) return; // Cashfree is redirecting (some banks); the return URL handles it.
-      if (result?.error && !result.paymentDetails) throw new Error(result.error.message || "Payment cancel ho gaya.");
+      if (result?.error && !result.paymentDetails) throw new Error(result.error.message || "The payment was cancelled.");
       window.location.href = `/payment/status?order_id=${encodeURIComponent(out.orderId)}`;
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Kuch galat ho gaya. Dobara try karein.");
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setBusy(false);
     }
   };
   return (
     <form onSubmit={submit} aria-busy={busy}>
-      <div className="field full"><label htmlFor="r-name">Full Name *</label><input id="r-name" name="name" required minLength={2} placeholder="Aapka naam" autoComplete="name" /></div>
+      <div className="field full"><label htmlFor="r-name">Full Name *</label><input id="r-name" name="name" required minLength={2} placeholder="Your name" autoComplete="name" /></div>
       <div className="field"><label htmlFor="r-phone">WhatsApp Number *</label><input id="r-phone" name="phone" required type="tel" inputMode="tel" pattern="[+0-9 \-]{10,16}" title="10-digit mobile number" placeholder="+91" autoComplete="tel" /></div>
-      <div className="field"><label htmlFor="r-city">City *</label><input id="r-city" name="city" required placeholder="Aapka shehar" autoComplete="address-level2" /></div>
-      {payOnline && <div className="field full"><label htmlFor="r-email">Email (payment receipt ke liye)</label><input id="r-email" name="email" type="email" placeholder="aap@example.com" autoComplete="email" /></div>}
+      <div className="field"><label htmlFor="r-city">City *</label><input id="r-city" name="city" required placeholder="Your city" autoComplete="address-level2" /></div>
+      {payOnline && <div className="field full"><label htmlFor="r-email">Email (for payment receipt)</label><input id="r-email" name="email" type="email" placeholder="you@example.com" autoComplete="email" /></div>}
       <div className="field full">
-        <label htmlFor="r-bg">Aap kaun hain?</label>
+        <label htmlFor="r-bg">Which describes you?</label>
         <select id="r-bg" name="bg" defaultValue="Hijama Beginner">
           <option>Hijama Beginner</option>
           <option>Therapy Practitioner</option>
@@ -222,12 +222,12 @@ export function RegisterForm() {
       </div>
       <div className="field full">
         <Btn type="submit" block icon={payOnline ? "arrow" : "whatsapp"}>
-          {payOnline ? (busy ? "Payment khul raha hai…" : `Pay ${fee.price} & Reserve Seat`) : fee.primary}
+          {payOnline ? (busy ? "Opening payment…" : `Pay ${fee.price} & Reserve Seat`) : fee.primary}
         </Btn>
       </div>
       {payOnline && <p className="secure"><Icon name="shield" />Secure payment via Cashfree — UPI, cards, netbanking &amp; wallets</p>}
       {error && <p className="ok err" role="alert">{error}</p>}
-      {sent && <p className="ok" role="status">Shukriya! WhatsApp par aapki details bhej di gayi hain — hum jald hi aapse contact karenge.</p>}
+      {sent && <p className="ok" role="status">Thank you! Your details have been sent on WhatsApp — we will contact you soon.</p>}
     </form>
   );
 }

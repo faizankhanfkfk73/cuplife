@@ -10,14 +10,14 @@ export const metadata: Metadata = { title: "Payment Status — Cupheal", robots:
 type View = { tone: "ok" | "wait" | "bad"; title: string; body: string };
 
 function view(order: CashfreeOrder | null): View {
-  if (!order) return { tone: "bad", title: "Order nahi mila", body: "Hum is payment ko verify nahi kar paaye. Agar paise kat gaye hain toh WhatsApp par order ID ke saath humse contact karein." };
+  if (!order) return { tone: "bad", title: "Order not found", body: "We couldn't verify this payment. If money was deducted, please contact us on WhatsApp with your order ID." };
   switch (order.order_status) {
     case "PAID":
-      return { tone: "ok", title: "Payment successful — aapki seat reserve ho gayi!", body: "Shukriya! Training ki saari details jald hi aapko WhatsApp par bhej di jayengi." };
+      return { tone: "ok", title: "Payment successful — your seat is reserved!", body: "Thank you! All the training details will be sent to you on WhatsApp shortly." };
     case "ACTIVE":
-      return { tone: "wait", title: "Payment complete nahi hua", body: "Aapka payment abhi pending ya cancel hai. Dobara try karein, ya agar paise kat gaye hain toh kuch minute baad yeh page refresh karein." };
+      return { tone: "wait", title: "Payment not completed", body: "Your payment is pending or was cancelled. Please try again, or if money was deducted, refresh this page in a few minutes." };
     default:
-      return { tone: "bad", title: "Payment fail ho gaya", body: "Yeh order expire ya cancel ho chuka hai. Kripya dobara register karein." };
+      return { tone: "bad", title: "Payment failed", body: "This order has expired or been cancelled. Please register again." };
   }
 }
 
@@ -30,8 +30,8 @@ export default async function PaymentStatus({ searchParams }: { searchParams: { 
   const v = view(order);
   const course = details[0].v;
   const waText = order?.order_status === "PAID"
-    ? `Assalamu Alaikum, maine ${course} ke liye payment kar diya hai.\nOrder ID: ${orderId}\nName: ${order.customer_details.customer_name ?? ""}`
-    : `Assalamu Alaikum, mujhe ${course} ke payment mein help chahiye.\nOrder ID: ${orderId || "-"}`;
+    ? `Assalamu Alaikum, I have completed the payment for the ${course}.\nOrder ID: ${orderId}\nName: ${order.customer_details.customer_name ?? ""}`
+    : `Assalamu Alaikum, I need help with my payment for the ${course}.\nOrder ID: ${orderId || "-"}`;
 
   return (
     <main className="pay-status">

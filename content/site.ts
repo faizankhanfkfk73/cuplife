@@ -1,8 +1,8 @@
-// All copy comes from "3-Day Offline Hijama Training Landing Page Copy.md".
+// All page copy lives here (English, adapted from "3-Day Offline Hijama Training Landing Page Copy.md").
 // Bracketed values are placeholders to fill in before launch.
 
 export const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // [INSERT WHATSAPP NUMBER]
-export const whatsappLink = (text = "Assalamu Alaikum, mujhe 3-Day Offline Hijama Training ke liye register karna hai.") =>
+export const whatsappLink = (text = "Assalamu Alaikum, I would like to register for the 3-Day Offline Hijama Training.") =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
 export const nav = [
@@ -14,9 +14,9 @@ export const nav = [
 
 export const hero = {
   eyebrow: "3-Day Offline Hijama Training Program",
-  title: ["Hijama Therapy Seekhiye", "Practical Training Ke Saath"],
-  sub: "3 Din Ki Intensive Offline Training Jahan Aap Hijama Ke Fundamentals, Anatomy, Practical Techniques, Client Handling Aur Self-Employment Ke Basics Seekhenge.",
-  body: "Agar aap Hijama ko proper guidance aur practical training ke saath seekhna chahte hain, toh ye 3-Day Offline Training Program aapke liye design kiya gaya hai.",
+  title: ["Learn Hijama Therapy", "With Hands-On Practical Training"],
+  sub: "An intensive 3-day offline training where you learn Hijama fundamentals, anatomy, practical techniques, client handling and the basics of self-employment.",
+  body: "If you want to learn Hijama with proper guidance and practical training, this 3-Day Offline Training Program has been designed for you.",
   chips: [
     "3 Days Intensive Training",
     "Theory + Practical Learning",
@@ -30,23 +30,23 @@ export const hero = {
 };
 
 export const questions = {
-  tag: "Kya Aap Taiyaar Hain?",
-  title: "Kya aap Hijama therapy seekhna chahte hain?",
-  lead: "Kya aapne kabhi socha hai:",
+  tag: "Are You Ready?",
+  title: "Do you want to learn Hijama therapy?",
+  lead: "Have you ever wondered:",
   items: [
-    "Hijama properly kaise seekhein?",
-    "Cupping points ko kaise understand karein?",
-    "Client ko session se pehle aur baad mein kaise handle karein?",
-    "Hijama seekhne ke baad is skill ko self-employment mein kaise use karein?",
+    "How do I learn Hijama properly?",
+    "How do I understand cupping points?",
+    "How should I handle a client before and after a session?",
+    "How can I use Hijama as a skill for self-employment?",
   ],
-  close: "Agar aap in questions ke answers practical training ke through samajhna chahte hain, toh ye program aapke liye hai.",
+  close: "If you want to find the answers to these questions through practical training, this program is for you.",
 };
 
 export const approach = {
-  tag: "Humara Focus",
-  title: "Ye sirf theory course nahi hai",
+  tag: "Our Focus",
+  title: "This is not just a theory course",
   steps: ["Learn", "Understand", "Observe", "Practice", "Build Confidence"],
-  body: "Aapko Hijama ke concepts ke saath-saath practical workflow, client communication, safety aur basic business/self-employment guidance bhi di jayegi.",
+  body: "Along with Hijama concepts, you will get guidance on the practical workflow, client communication, safety and the basics of running your own service.",
 };
 
 export type Day = {
@@ -65,60 +65,60 @@ export const days: Day[] = [
   {
     day: "Day 1",
     name: "Hijama Fundamentals",
-    title: "Strong Foundation Se Shuruaat",
-    intro: "Day 1 mein aap Hijama ke basic concepts aur professional workflow ko samjhenge.",
+    title: "Start With a Strong Foundation",
+    intro: "On Day 1 you will understand the basic concepts of Hijama and the professional workflow.",
     label: "Topics",
     topics: [
-      "Hijama kya hai?",
-      "Hijama ka basic concept",
-      "Hijama ke different types",
-      "Dry Cupping & Wet Cupping ka introduction",
+      "What is Hijama?",
+      "The basic concept of Hijama",
+      "Different types of Hijama",
+      "Introduction to dry cupping & wet cupping",
       "Traditional context of Hijama",
       "Basic Hijama equipment",
-      "Equipment ka proper handling",
+      "Proper handling of equipment",
       "Session setup",
       "Basic hygiene principles",
       "Infection-control basics",
-      "Client assessment ka introduction",
+      "Introduction to client assessment",
       "Basic safety considerations",
       "Contraindications & precautions",
       "Professional ethics & communication",
     ],
-    goal: "Hijama ke fundamentals ko strong karna aur ek proper session ka basic workflow samajhna.",
+    goal: "Build a strong grasp of Hijama fundamentals and understand the basic workflow of a proper session.",
     image: "/assets/images/hijama-equipment.jpg",
   },
   {
     day: "Day 2",
     name: "Anatomy + Cupping Points",
-    title: "Body Ko Samjhiye, Technique Ko Better Samjhiye",
-    intro: "Hijama seekhne ke liye body ke basic anatomical structures ko samajhna important hai.",
+    title: "Understand the Body, Understand the Technique Better",
+    intro: "Understanding the body's basic anatomical structures is essential for learning Hijama.",
     label: "Day 2 Topics",
     topics: [
-      "Human body anatomy ka basic introduction",
+      "Basic introduction to human anatomy",
       "Major body regions",
-      "Muscles ka basic understanding",
+      "Basic understanding of muscles",
       "Back anatomy",
       "Neck & shoulder region",
       "Arms & legs",
       "Lower back region",
       "Commonly used cupping areas",
-      "Cupping points ka introduction",
-      "Point selection ke basic principles",
+      "Introduction to cupping points",
+      "Basic principles of point selection",
       "Client positioning",
       "Cup placement",
       "Vacuum/pressure control",
       "Common practical mistakes",
       "Safety precautions",
     ],
-    goal: "Body anatomy aur cupping application ke relationship ko better understand karna.",
-    note: "Training mein point selection aur technique ko individual assessment, safety considerations aur applicable professional guidelines ke context mein samjhaya jayega.",
+    goal: "Better understand the relationship between body anatomy and cupping application.",
+    note: "Point selection and technique will be taught in the context of individual assessment, safety considerations and applicable professional guidelines.",
     image: "/assets/images/hijama-training.jpg",
   },
   {
     day: "Day 3",
     name: "Practical Hijama Training",
-    title: "Ab Theory Ko Practical Workflow Se Connect Kijiye",
-    intro: "Day 3 ka major focus practical demonstration aur supervised learning par rahega.",
+    title: "Now Connect Theory to the Practical Workflow",
+    intro: "The main focus of Day 3 is practical demonstration and supervised learning.",
     label: "Practical Topics",
     topics: [
       "Complete session setup",
@@ -127,7 +127,7 @@ export const days: Day[] = [
       "Proper client positioning",
       "Cup placement",
       "Vacuum control",
-      "Wet cupping procedure ka supervised demonstration",
+      "Supervised demonstration of the wet cupping procedure",
       "Hygiene & infection-control workflow",
       "Safe handling principles",
       "Post-session care",
@@ -137,101 +137,101 @@ export const days: Day[] = [
       "Doubt clearing",
       "Q&A session",
     ],
-    goal: "Ek Hijama session ka complete professional workflow samajhna.",
+    goal: "Understand the complete professional workflow of a Hijama session.",
     image: "/assets/images/hijama-treatment.jpg",
   },
 ];
 
 export const clientHandling = {
   tag: "Client / Patient Handling Training",
-  title: "Sirf Hijama Karna Nahi — Client Ko Professionally Handle Karna Bhi Seekhiye",
-  body: "Ek successful practitioner ke liye technique ke saath communication aur client handling bhi important hai.",
-  lead: "Training mein aap seekhenge:",
+  title: "Don't Just Perform Hijama — Learn to Handle Clients Professionally Too",
+  body: "For a successful practitioner, communication and client handling matter as much as technique.",
+  lead: "In the training you will learn:",
   groups: [
     {
       name: "Communication",
       items: [
-        "Client se professionally kaise baat karein",
-        "First interaction kaise karein",
-        "Client ki concerns kaise samjhein",
-        "Client ki expectations kaise manage karein",
+        "How to speak with clients professionally",
+        "How to handle the first interaction",
+        "How to understand a client's concerns",
+        "How to manage a client's expectations",
       ],
     },
     {
       name: "Pre-Session Handling",
       items: [
-        "Basic client information kaise collect karein",
-        "Relevant health/safety questions kaise discuss karein",
-        "Session se pehle client ko kya explain karein",
-        "Basic screening aur safety considerations",
+        "How to collect basic client information",
+        "How to discuss relevant health/safety questions",
+        "What to explain to the client before the session",
+        "Basic screening and safety considerations",
       ],
     },
     {
       name: "During Session",
       items: [
-        "Client ko comfortable kaise rakhein",
-        "Procedure ke steps ko clearly kaise explain karein",
-        "Anxiety/fear wale client se kaise communicate karein",
-        "Professional behaviour maintain kaise karein",
+        "How to keep the client comfortable",
+        "How to explain each step of the procedure clearly",
+        "How to communicate with anxious or fearful clients",
+        "How to maintain professional behaviour",
       ],
     },
     {
       name: "After Session",
       items: [
         "Basic after-care guidance",
-        "Client ke questions handle karna",
+        "Handling client questions",
         "Follow-up communication",
-        "Repeat session ke liye professional communication",
+        "Professional communication for repeat sessions",
       ],
     },
   ],
 };
 
 export const selfEmployment = {
-  tag: "Hijama Se Self-Employment Tak",
-  title: "Skill Seekhiye Aur Apni Professional Journey Ki Planning Kijiye",
-  body: "Agar aap Hijama ko future mein self-employment opportunity ke roop mein explore karna chahte hain, toh course mein basic business guidance bhi milegi.",
-  lead: "Aap seekhenge:",
+  tag: "From Hijama to Self-Employment",
+  title: "Learn the Skill and Plan Your Professional Journey",
+  body: "If you want to explore Hijama as a self-employment opportunity in the future, the course also includes basic business guidance.",
+  lead: "You will learn:",
   items: [
-    "Hijama service ko professionally structure kaise karein",
-    "Home-visit Hijama service ka basic model",
-    "Apna therapy/wellness setup plan karna",
+    "How to structure a Hijama service professionally",
+    "The basic model of a home-visit Hijama service",
+    "Planning your own therapy/wellness setup",
     "Basic equipment & setup planning",
-    "Service packages kaise design karein",
-    "Pricing ka basic framework",
-    "Client booking process",
-    "WhatsApp se enquiries handle karna",
-    "Instagram/Facebook par apni service promote karna",
-    "Local clients generate karne ke basic methods",
+    "How to design service packages",
+    "A basic pricing framework",
+    "The client booking process",
+    "Handling enquiries on WhatsApp",
+    "Promoting your service on Instagram/Facebook",
+    "Basic methods to attract local clients",
     "Referral strategy",
     "Repeat-client strategy",
     "Personal branding basics",
-    "Professional profile kaise banayein",
-    "Lead ko booking mein convert karne ka basic process",
+    "How to build a professional profile",
+    "The basic process of converting leads into bookings",
   ],
   path: ["Skill", "Confidence", "Client Handling", "Service Setup", "Self-Employment"],
 };
 
 export const marketing = {
   tag: "Basic Digital Marketing Guidance",
-  title: "Apni service ko online present kijiye",
-  body: "Aaj ke time mein skill ke saath apni service ko online present karna bhi important hai.",
+  title: "Present your service online",
+  body: "Today, presenting your service online is just as important as the skill itself.",
   channels: [
-    { name: "Instagram", icon: "instagram", items: ["Professional profile setup", "Bio kaise likhein", "Content ideas", "Local audience tak kaise pahunchhein"] },
-    { name: "WhatsApp", icon: "whatsapp", items: ["Enquiry handling", "Service information share karna", "Appointment booking", "Follow-up"] },
-    { name: "Facebook", icon: "facebook", items: ["Local audience targeting ka basic concept", "Local community marketing", "Service promotion basics"] },
+    { name: "Instagram", icon: "instagram", items: ["Professional profile setup", "How to write your bio", "Content ideas", "How to reach a local audience"] },
+    { name: "WhatsApp", icon: "whatsapp", items: ["Enquiry handling", "Sharing service information", "Appointment booking", "Follow-up"] },
+    { name: "Facebook", icon: "facebook", items: ["Basics of local audience targeting", "Local community marketing", "Service promotion basics"] },
   ],
 };
 
 export const trainer = {
-  tag: "Training Kiske Dwara?",
-  title: "Learn With Experienced Hijama & Therapy Trainer",
+  tag: "Who Is Your Trainer?",
+  title: "Learn With an Experienced Hijama & Therapy Trainer",
   name: "Faizan Uddin Khan",
   creds: "D.H.T. | D.CH.T.",
   role: "Certified Hijama & Chiropractic Therapist",
   experience: "4+ Years Experience",
   photo: "/assets/images/faizan-uddin-khan.jpg",
-  focusLead: "Training ka focus rahega:",
+  focusLead: "The training will focus on:",
   focus: ["Simple Explanation", "Practical Demonstration", "Supervised Learning", "Real-World Guidance"],
 };
 
@@ -254,44 +254,44 @@ export const includes = [
 ];
 
 export const bonuses = [
-  { name: "Hijama Training Notes", body: "Important concepts aur training points ko revise karne ke liye.", icon: "notes" },
-  { name: "Client Assessment Checklist", body: "Client interaction ko structured banane ke liye.", icon: "clipboard" },
-  { name: "Session Preparation Checklist", body: "Session se pehle required preparation ko organize karne ke liye.", icon: "check" },
-  { name: "Self-Employment Starter Guide", body: "Basic service setup, pricing, client acquisition aur marketing ke practical points.", icon: "briefcase" },
-  { name: "Post-Training Doubt Support", body: "Training ke baad basic doubts ko clarify karne ke liye support.", icon: "chat" },
+  { name: "Hijama Training Notes", body: "To revise the important concepts and training points.", icon: "notes" },
+  { name: "Client Assessment Checklist", body: "To give your client interactions a clear structure.", icon: "clipboard" },
+  { name: "Session Preparation Checklist", body: "To organise everything you need before a session.", icon: "check" },
+  { name: "Self-Employment Starter Guide", body: "Practical pointers on service setup, pricing, client acquisition and marketing.", icon: "briefcase" },
+  { name: "Post-Training Doubt Support", body: "Support to clear basic doubts after the training.", icon: "chat" },
 ];
 
 export const audience = [
-  { name: "Hijama Beginners", body: "Jo basic se Hijama seekhna chahte hain." },
-  { name: "Therapy Practitioners", body: "Jo apni existing skill set mein cupping/Hijama knowledge add karna chahte hain." },
-  { name: "Aspiring Self-Employed Practitioners", body: "Jo future mein home-visit ya suitable wellness service model explore karna chahte hain." },
-  { name: "Hijama Learners", body: "Jo structured offline training ke through concepts samajhna chahte hain." },
-  { name: "Wellness Entrepreneurs", body: "Jo wellness/therapy service ko professionally build karne ki planning kar rahe hain." },
+  { name: "Hijama Beginners", body: "Those who want to learn Hijama from the basics." },
+  { name: "Therapy Practitioners", body: "Those who want to add cupping/Hijama knowledge to their existing skill set." },
+  { name: "Aspiring Self-Employed Practitioners", body: "Those who want to explore a home-visit or wellness service model in the future." },
+  { name: "Hijama Learners", body: "Those who want to understand the concepts through structured offline training." },
+  { name: "Wellness Entrepreneurs", body: "Those planning to build a wellness/therapy service professionally." },
 ];
 
 export const objective = {
-  tag: "Sirf Certificate Ke Liye Nahi",
+  tag: "Not Just for a Certificate",
   title: "Skill + Practical Knowledge + Confidence",
-  body: "Hamari training ka objective sirf certificate provide karna nahi hai.",
-  lead: "Hum chahte hain ki aap:",
+  body: "The goal of our training is not just to hand out a certificate.",
+  lead: "We want you to:",
   steps: [
-    "Hijama ko samjhein",
-    "Safety ko samjhein",
-    "Practical workflow dekhein",
-    "Client handling seekhein",
-    "Apni professional journey ki planning karein",
+    "Understand Hijama",
+    "Understand safety",
+    "See the practical workflow",
+    "Learn client handling",
+    "Plan your professional journey",
   ],
 };
 
 export const reasons = [
-  { name: "Offline Training", body: "Trainer ke saath face-to-face learning." },
-  { name: "Practical Focus", body: "Demonstration aur supervised practical learning." },
-  { name: "Beginner Friendly", body: "Basic concepts se structured learning." },
-  { name: "Client Handling", body: "Sirf technique nahi, client communication bhi." },
-  { name: "Self-Employment Guidance", body: "Skill ko potential service/business opportunity mein convert karne ki basic guidance." },
-  { name: "Safety Focus", body: "Hygiene, contraindications aur safety considerations par focus." },
-  { name: "Limited Batch", body: "Better interaction aur doubt clearing ke liye limited seats." },
-  { name: "Certificate", body: "Successful completion par course completion certificate." },
+  { name: "Offline Training", body: "Face-to-face learning with the trainer." },
+  { name: "Practical Focus", body: "Demonstrations and supervised practical learning." },
+  { name: "Beginner Friendly", body: "Structured learning that starts from the basics." },
+  { name: "Client Handling", body: "Not just technique — client communication too." },
+  { name: "Self-Employment Guidance", body: "Basic guidance on turning the skill into a potential service or business." },
+  { name: "Safety Focus", body: "Focus on hygiene, contraindications and safety considerations." },
+  { name: "Limited Batch", body: "Limited seats for better interaction and doubt clearing." },
+  { name: "Certificate", body: "Course completion certificate on successful completion." },
 ];
 
 export const details = [
@@ -304,9 +304,9 @@ export const details = [
   { k: "Certificate", v: "Course Completion Certificate" },
 ];
 
-// Course fee in rupees, charged through Cashfree. Set this before launch: online payment
-// stays disabled (the server refuses to create orders) while it is null.
-export const COURSE_FEE_INR = 2000 as number | null; // set to null to turn off online payment
+// Course fee in rupees, charged through Cashfree. Set to null to turn off online payment
+// (the server then refuses to create orders and the form falls back to WhatsApp).
+export const COURSE_FEE_INR = 2000 as number | null;
 
 export const fee = {
   tag: "Course Fee",
@@ -318,36 +318,36 @@ export const fee = {
 };
 
 export const invest = {
-  title: "3 Din Apni Skill Par Invest Kijiye",
-  body: "Hijama ko sirf online videos dekhkar samajhne ke bajaye structured offline training, demonstration aur trainer guidance ke saath seekhiye.",
-  badge: "Seats Limited Hain",
+  title: "Invest 3 Days in Your Skill",
+  body: "Instead of trying to understand Hijama from online videos alone, learn it through structured offline training, live demonstrations and trainer guidance.",
+  badge: "Seats Are Limited",
   primary: "Book Your Seat Now",
   secondary: "WhatsApp Us for Registration",
 };
 
 export const faqs = [
-  { q: "Course kitne din ka hai?", a: "Course 3 days ka intensive offline training program hai." },
-  { q: "Kya beginners join kar sakte hain?", a: "Yes, training foundational concepts se start hogi. Beginners ke liye bhi basic concepts explain kiye jayenge." },
-  { q: "Kya practical training hogi?", a: "Yes. Training mein practical demonstrations aur supervised practical learning included hogi, applicable safety protocols ke according." },
-  { q: "Kya anatomy bhi sikhayi jayegi?", a: "Yes. Course mein basic human anatomy aur relevant body regions ka orientation diya jayega." },
-  { q: "Kya client/patient handling sikhaya jayega?", a: "Yes. Client communication, basic pre-session interaction, comfort, after-care guidance aur professional handling cover ki jayegi." },
-  { q: "Kya self-employment ke baare mein bhi bataya jayega?", a: "Yes. Course mein Hijama service ko professionally structure karne, home-visit model, pricing, client acquisition, WhatsApp/Instagram marketing aur basic self-employment planning par guidance di jayegi." },
-  { q: "Kya certificate milega?", a: "Yes. Course successfully complete karne wale participants ko Course Completion Certificate diya jayega." },
-  { q: "Kya course ke baad main independently Hijama practice kar sakta hoon?", a: "Course certificate ko medical license, government registration ya independent practice authorization nahi maana jana chahiye. Independent practice se pehle apne local laws, regulations, qualifications aur applicable professional scope ko verify karna zaroori hai." },
-  { q: "Training kis language mein hogi?", a: "Training primarily Hindi/Hinglish mein conduct ki ja sakti hai." },
-  { q: "Seats limited kyun hain?", a: "Practical learning, trainer interaction aur doubt clearing ko better maintain karne ke liye batch size limited rakha jayega." },
+  { q: "How long is the course?", a: "The course is a 3-day intensive offline training program." },
+  { q: "Can beginners join?", a: "Yes. The training starts from foundational concepts, and the basics will be explained for beginners too." },
+  { q: "Will there be practical training?", a: "Yes. The training includes practical demonstrations and supervised practical learning, in line with applicable safety protocols." },
+  { q: "Will anatomy be taught?", a: "Yes. The course includes an orientation to basic human anatomy and the relevant body regions." },
+  { q: "Will client/patient handling be taught?", a: "Yes. Client communication, basic pre-session interaction, comfort, after-care guidance and professional handling are all covered." },
+  { q: "Will self-employment be covered?", a: "Yes. The course gives guidance on structuring a Hijama service professionally, the home-visit model, pricing, client acquisition, WhatsApp/Instagram marketing and basic self-employment planning." },
+  { q: "Will I get a certificate?", a: "Yes. Participants who successfully complete the course will receive a Course Completion Certificate." },
+  { q: "Can I practise Hijama independently after the course?", a: "The course certificate should not be treated as a medical license, government registration or authorization for independent practice. Before practising independently, you must verify your local laws, regulations, qualifications and applicable professional scope." },
+  { q: "What language will the training be in?", a: "The training will primarily be conducted in Hindi/Hinglish." },
+  { q: "Why are seats limited?", a: "The batch size is kept limited to maintain quality practical learning, trainer interaction and doubt clearing." },
 ];
 
 export const disclaimer = [
-  "Hijama, particularly wet cupping, invasive procedure ho sakta hai. Training mein safety, hygiene, infection prevention, contraindications, client assessment aur applicable precautions ko importance di jayegi.",
-  "Course completion certificate medical degree, medical license, government registration ya independent medical practice ki authorization nahi hai.",
-  "Participants ko apne state/country ke applicable laws, regulations, professional requirements aur scope of practice ka compliance karna hoga.",
+  "Hijama, particularly wet cupping, can be an invasive procedure. The training gives importance to safety, hygiene, infection prevention, contraindications, client assessment and applicable precautions.",
+  "The course completion certificate is not a medical degree, medical license, government registration or authorization for independent medical practice.",
+  "Participants must comply with the applicable laws, regulations, professional requirements and scope of practice in their state/country.",
 ];
 
 export const finale = {
   tag: "Your Hijama Learning Journey Starts Here",
-  title: "3 Din. Practical Training. Real Guidance.",
-  body: "Hijama ke fundamentals se lekar anatomy, practical techniques, safety, client handling aur self-employment guidance tak ek structured offline training program mein seekhiye.",
+  title: "3 Days. Practical Training. Real Guidance.",
+  body: "Learn everything from Hijama fundamentals to anatomy, practical techniques, safety, client handling and self-employment guidance in one structured offline training program.",
   list: ["Learn Hijama", "Learn Practical Skills", "Learn Client Handling", "Learn Self-Employment Basics", "Get Course Completion Certificate"],
   ask: "Ready To Learn Hijama?",
   cta: "Reserve Your Seat Today",
