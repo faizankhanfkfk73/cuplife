@@ -306,7 +306,7 @@ export const details = [
 
 // Course fee in rupees, charged through Cashfree. Set this before launch: online payment
 // stays disabled (the server refuses to create orders) while it is null.
-export const COURSE_FEE_INR = null as number | null; // [FINAL PRICE] e.g. 4999
+export const COURSE_FEE_INR = 2000 as number | null; // set to null to turn off online payment
 
 export const fee = {
   tag: "Course Fee",
