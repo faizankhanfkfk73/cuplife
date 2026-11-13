@@ -1,0 +1,27 @@
+# Amplify Console environment variables exist only in the BUILD container's shell.
+# Next.js reads server vars (CASHFREE_*, SITE_URL) at request time in the SSR runtime,
+# which does NOT inherit those shell vars. Writing them into .env.production during the
+# build ships them with the deployment. Every env var prefix the app reads must be listed
+# in the grep below, or it is silently empty at runtime.
+#
+# Set these in Amplify Console -> App settings -> Environment variables:
+#   CASHFREE_APP_ID, CASHFREE_SECRET_KEY, CASHFREE_ENV=production,
+#   NEXT_PUBLIC_CASHFREE_ENV=production, SITE_URL=https://cuplife.in
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+    build:
+      commands:
+        - env | grep -e '^NEXT_PUBLIC_' -e '^CASHFREE_' -e '^SITE_URL=' >> .env.production || true
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+      - .next/cache/**/*

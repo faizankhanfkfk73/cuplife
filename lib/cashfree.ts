@@ -12,6 +12,8 @@ function config() {
   return { appId, secret, base };
 }
 
+export const isCashfreeConfigured = () => !!(process.env.CASHFREE_APP_ID && process.env.CASHFREE_SECRET_KEY);
+
 export class CashfreeError extends Error {
   constructor(message: string, public status: number, public code?: string) {
     super(message);

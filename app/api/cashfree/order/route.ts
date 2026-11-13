@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { CashfreeError, createOrder } from "@/lib/cashfree";
+import { CashfreeError, createOrder, isCashfreeConfigured } from "@/lib/cashfree";
 import { COURSE_FEE_INR } from "@/content/site";
 
 export const runtime = "nodejs";
@@ -28,6 +28,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Online payment is not available right now. Please register on WhatsApp." }, { status: 503 });
   }
 
+  if (!isCashfreeConfigured()) {
+    console.error("[cashfree] CASHFREE_APP_ID / CASHFREE_SECRET_KEY are not set on this server");
+    return NextResponse.json({ error: "Online payment is not set up yet. Please register on WhatsApp.", code: "payment_not_configured" }, { status: 503 });
+  }
+
   const body = await req.json().catch(() => null);
   const name = clean(body?.name);
   const city = clean(body?.city, 60);
@@ -53,6 +58,6 @@ export async function POST(req: NextRequest) {
   } catch (err) {
     const status = err instanceof CashfreeError ? err.status : 500;
     console.error("[cashfree] create order failed", status, err instanceof Error ? err.message : err);
-    return NextResponse.json({ error: "We couldn't start the payment. Please try again shortly or register on WhatsApp." }, { status: 502 });
+    return NextResponse.json({ error: "We couldn't start the payment. Please try again shortly or register on WhatsApp.", code: "gateway_error" }, { status: 502 });
   }
 }
