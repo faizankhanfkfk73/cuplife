@@ -85,7 +85,7 @@ export const days: Day[] = [
       "Professional ethics & communication",
     ],
     goal: "Hijama ke fundamentals ko strong karna aur ek proper session ka basic workflow samajhna.",
-    image: "/assets/images/consult.jpg",
+    image: "/assets/images/hijama-equipment.jpg",
   },
   {
     day: "Day 2",
@@ -112,7 +112,7 @@ export const days: Day[] = [
     ],
     goal: "Body anatomy aur cupping application ke relationship ko better understand karna.",
     note: "Training mein point selection aur technique ko individual assessment, safety considerations aur applicable professional guidelines ke context mein samjhaya jayega.",
-    image: "/assets/images/shoulder.jpg",
+    image: "/assets/images/hijama-training.jpg",
   },
   {
     day: "Day 3",
@@ -138,7 +138,7 @@ export const days: Day[] = [
       "Q&A session",
     ],
     goal: "Ek Hijama session ka complete professional workflow samajhna.",
-    image: "/assets/images/back-massage.jpg",
+    image: "/assets/images/hijama-treatment.jpg",
   },
 ];
 
@@ -230,6 +230,7 @@ export const trainer = {
   creds: "D.H.T. | D.CH.T.",
   role: "Certified Hijama & Chiropractic Therapist",
   experience: "4+ Years Experience",
+  photo: "/assets/images/faizan-uddin-khan.jpg",
   focusLead: "Training ka focus rahega:",
   focus: ["Simple Explanation", "Practical Demonstration", "Supervised Learning", "Real-World Guidance"],
 };
@@ -303,10 +304,14 @@ export const details = [
   { k: "Certificate", v: "Course Completion Certificate" },
 ];
 
+// Course fee in rupees, charged through Cashfree. Set this before launch: online payment
+// stays disabled (the server refuses to create orders) while it is null.
+export const COURSE_FEE_INR = null as number | null; // [FINAL PRICE] e.g. 4999
+
 export const fee = {
   tag: "Course Fee",
   label: "Special Training Fee",
-  price: "₹[FINAL PRICE]",
+  price: COURSE_FEE_INR ? `₹${COURSE_FEE_INR.toLocaleString("en-IN")}` : "₹[FINAL PRICE]",
   note: "Limited seats available for this batch.",
   primary: "Reserve My Seat",
   secondary: "WhatsApp To Register",

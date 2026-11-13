@@ -2,7 +2,7 @@
 
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import Icon, { Logo } from "./Icon";
-import { nav, whatsappLink, type Day } from "@/content/site";
+import { COURSE_FEE_INR, fee, nav, whatsappLink, type Day } from "@/content/site";
 
 export function Btn({ href, children, variant = "", icon = "arrow", block, onClick, type }: {
   href?: string; children: ReactNode; variant?: string; icon?: string; block?: boolean;
@@ -141,26 +141,71 @@ export function Accordion({ items, initial = 0, numbered, className = "" }: {
   );
 }
 
+type CashfreeSDK = { checkout: (o: { paymentSessionId: string; redirectTarget?: "_self" | "_blank" | "_top" }) => Promise<{ error?: { message?: string } }> };
+declare global { interface Window { Cashfree?: (o: { mode: "production" | "sandbox" }) => CashfreeSDK } }
+
+const CASHFREE_MODE = process.env.NEXT_PUBLIC_CASHFREE_ENV === "sandbox" ? "sandbox" : "production";
+
+let sdkPromise: Promise<CashfreeSDK> | null = null;
+function loadCashfree() {
+  sdkPromise ??= new Promise<CashfreeSDK>((resolve, reject) => {
+    const ready = () => (window.Cashfree ? resolve(window.Cashfree({ mode: CASHFREE_MODE })) : reject(new Error("Cashfree SDK unavailable")));
+    if (window.Cashfree) return ready();
+    const s = document.createElement("script");
+    s.src = "https://sdk.cashfree.com/js/v3/cashfree.js";
+    s.async = true;
+    s.onload = ready;
+    s.onerror = () => { sdkPromise = null; reject(new Error("Cashfree SDK failed to load")); };
+    document.head.appendChild(s);
+  });
+  return sdkPromise;
+}
+
 export function RegisterForm() {
   const [sent, setSent] = useState(false);
-  const submit = (e: FormEvent<HTMLFormElement>) => {
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  const payOnline = !!COURSE_FEE_INR;
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
-    const msg = [
-      "Assalamu Alaikum, mujhe 3-Day Offline Hijama Training mein seat reserve karni hai.",
-      `Name: ${f.get("name")}`,
-      `Phone: ${f.get("phone")}`,
-      `City: ${f.get("city")}`,
-      `Background: ${f.get("bg")}`,
-    ].join("\n");
-    window.open(whatsappLink(msg), "_blank", "noopener,noreferrer");
-    setSent(true);
+    const data = Object.fromEntries(["name", "phone", "email", "city", "bg"].map((k) => [k, String(f.get(k) ?? "")]));
+
+    // Until a fee is set, registration falls back to WhatsApp.
+    if (!payOnline) {
+      const msg = [
+        "Assalamu Alaikum, mujhe 3-Day Offline Hijama Training mein seat reserve karni hai.",
+        `Name: ${data.name}`, `Phone: ${data.phone}`, `City: ${data.city}`, `Background: ${data.bg}`,
+      ].join("\n");
+      window.open(whatsappLink(msg), "_blank", "noopener,noreferrer");
+      setSent(true);
+      return;
+    }
+
+    if (busy) return;
+    setBusy(true);
+    setError("");
+    try {
+      const [cashfree, res] = await Promise.all([
+        loadCashfree(),
+        fetch("/api/cashfree/order", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
+      ]);
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.paymentSessionId) throw new Error(out.error || "Payment shuru nahi ho saka.");
+      const result = await cashfree.checkout({ paymentSessionId: out.paymentSessionId, redirectTarget: "_self" });
+      if (result?.error) throw new Error(result.error.message || "Payment cancel ho gaya.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Kuch galat ho gaya. Dobara try karein.");
+      setBusy(false);
+    }
   };
   return (
-    <form onSubmit={submit}>
-      <div className="field full"><label htmlFor="r-name">Full Name *</label><input id="r-name" name="name" required placeholder="Aapka naam" autoComplete="name" /></div>
-      <div className="field"><label htmlFor="r-phone">WhatsApp Number *</label><input id="r-phone" name="phone" required type="tel" inputMode="tel" placeholder="+91" autoComplete="tel" /></div>
+    <form onSubmit={submit} aria-busy={busy}>
+      <div className="field full"><label htmlFor="r-name">Full Name *</label><input id="r-name" name="name" required minLength={2} placeholder="Aapka naam" autoComplete="name" /></div>
+      <div className="field"><label htmlFor="r-phone">WhatsApp Number *</label><input id="r-phone" name="phone" required type="tel" inputMode="tel" pattern="[+0-9 \-]{10,16}" title="10-digit mobile number" placeholder="+91" autoComplete="tel" /></div>
       <div className="field"><label htmlFor="r-city">City *</label><input id="r-city" name="city" required placeholder="Aapka shehar" autoComplete="address-level2" /></div>
+      {payOnline && <div className="field full"><label htmlFor="r-email">Email (payment receipt ke liye)</label><input id="r-email" name="email" type="email" placeholder="aap@example.com" autoComplete="email" /></div>}
       <div className="field full">
         <label htmlFor="r-bg">Aap kaun hain?</label>
         <select id="r-bg" name="bg" defaultValue="Hijama Beginner">
@@ -171,7 +216,13 @@ export function RegisterForm() {
           <option>Wellness Entrepreneur</option>
         </select>
       </div>
-      <div className="field full"><Btn type="submit" block icon="whatsapp">Reserve My Seat</Btn></div>
+      <div className="field full">
+        <Btn type="submit" block icon={payOnline ? "arrow" : "whatsapp"}>
+          {payOnline ? (busy ? "Payment khul raha hai…" : `Pay ${fee.price} & Reserve Seat`) : fee.primary}
+        </Btn>
+      </div>
+      {payOnline && <p className="secure"><Icon name="shield" />Secure payment via Cashfree — UPI, cards, netbanking &amp; wallets</p>}
+      {error && <p className="ok err" role="alert">{error}</p>}
       {sent && <p className="ok" role="status">Shukriya! WhatsApp par aapki details bhej di gayi hain — hum jald hi aapse contact karenge.</p>}
     </form>
   );

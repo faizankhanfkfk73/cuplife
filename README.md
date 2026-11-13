@@ -15,8 +15,20 @@ All copy is in `content/site.ts`, taken from `3-Day Offline Hijama Training Land
 Fill these in before launch:
 - `WHATSAPP_NUMBER` in `content/site.ts` (every WhatsApp button and the registration form use it)
 - `[INSERT DATE]`, `[INSERT CITY & VENUE]`, `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
-- `₹[FINAL PRICE]` (`fee.price`)
-- Trainer photo: the trainer card shows an "FK" monogram for now. Add a real photo of Faizan Uddin Khan if you have one.
-- Photos are Phyco's physiotherapy stock. Replace them with real Hijama/cupping training photos when you can.
+- `COURSE_FEE_INR` in `content/site.ts` (the fee in rupees; it sets the displayed price and the amount Cashfree charges)
 
-The registration form doesn't post anywhere. It opens WhatsApp with the details already typed in.
+## Images
+Hijama photos (`hijama-equipment.jpg`, `hijama-training.jpg`, `hijama-treatment.jpg`) and the trainer portrait (`faizan-uddin-khan.jpg`) are in `public/assets/images/`, taken from the Cupheal-Hijama-Landing-Page package and compressed. The Hijama illustrations are AI-generated.
+
+## Payments (Cashfree)
+Copy `.env.example` to `.env.local` and fill in the Cashfree App ID and Secret Key. `.env.local` is git-ignored, so never commit keys.
+
+- `POST /api/cashfree/order` creates the order on the server. The amount comes from `COURSE_FEE_INR`, never from the browser.
+- The registration form opens Cashfree Checkout (JS SDK v3). After payment Cashfree sends the buyer to `/payment/status?order_id=…`, which checks the order with Cashfree before showing success.
+- `POST /api/cashfree/webhook` verifies the webhook signature and logs paid registrations. Add it in Cashfree Dashboard → Developers → Webhooks.
+- While `COURSE_FEE_INR` is `null`, online payment is off and the form opens WhatsApp as before.
+
+Before going live with production keys:
+1. Set `SITE_URL` to the live https domain. Cashfree production needs an https return URL.
+2. Whitelist that domain in Cashfree Dashboard → Developers → Whitelisting.
+3. Set environment variables on the host (the `.env.local` keys) and redeploy.

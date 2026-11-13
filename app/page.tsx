@@ -87,8 +87,8 @@ export default function Home() {
                 </ol>
               </Reveal>
               <Reveal delay={200} className="about-imgs">
-                <img src="/assets/images/assess.jpg" alt="Trainer guiding a learner during an assessment" />
-                <img src="/assets/images/leg.jpg" alt="Hands-on practical technique" />
+                <img src="/assets/images/hijama-training.jpg" alt="Trainer demonstrating a cupping pump to a learner" />
+                <img src="/assets/images/hijama-equipment.jpg" alt="Hijama cups, pump and sterile supplies laid out for a session" />
               </Reveal>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function Home() {
               <Tag>{clientHandling.tag}</Tag>
               <h2 className="h2">{clientHandling.title}</h2>
               <p className="lead">{clientHandling.body} {clientHandling.lead}</p>
-              <img src="/assets/images/supervised.jpg" alt="Trainer supervising a learner's technique" />
+              <img src="/assets/images/hijama-training.jpg" alt="Trainer guiding a learner through cupping equipment handling" />
             </Reveal>
             <Reveal delay={120}>
               <Accordion
@@ -137,9 +137,9 @@ export default function Home() {
             </Reveal>
             <Reveal className="mosaic">
               <div className="tile olive-t"><Icon name="briefcase" className="ico" /><h3>Service ko professionally structure kijiye</h3><p>Home-visit model, packages aur pricing ka basic framework.</p></div>
-              <div className="tile tall"><img src="/assets/images/table.jpg" alt="Therapy setup with a client on the table" /></div>
-              <div className="tile"><img src="/assets/images/hands.jpg" alt="Gentle hands-on therapy" /></div>
-              <div className="tile"><img src="/assets/images/session.jpg" alt="Practitioner working with a client" /></div>
+              <div className="tile tall"><img src="/assets/images/hijama-training.jpg" alt="Hands-on Hijama training in a therapy room" /></div>
+              <div className="tile"><img src="/assets/images/hijama-treatment.jpg" alt="Cupping session on a client's back" /></div>
+              <div className="tile"><img src="/assets/images/hijama-equipment.jpg" alt="Hijama equipment set" /></div>
               <div className="tile butter-t"><Icon name="users" className="ico" /><h3>Clients, referrals aur repeat bookings</h3><p>WhatsApp, Instagram aur local marketing se lead ko booking mein convert karna.</p></div>
             </Reveal>
             <Reveal><p className="lead" style={{ marginTop: 56 }}>{selfEmployment.lead}</p></Reveal>
@@ -177,8 +177,7 @@ export default function Home() {
         <section className="section" id="trainer">
           <div className="container trainer">
             <Reveal className="t-card">
-              <span className="monogram" aria-hidden="true">FK</span>
-              <span className="ring" aria-hidden="true">FK</span>
+              <img className="photo" src={trainer.photo} alt={`${trainer.name}, Hijama trainer`} />
               <span className="xp">{trainer.experience}</span>
               <h3>{trainer.name}</h3>
               <p className="creds">{trainer.creds}</p>
@@ -345,7 +344,7 @@ export default function Home() {
               <h2 className="h2">Frequently asked questions</h2>
             </Reveal>
             <div className="faq-grid">
-              <Reveal className="faq-img"><img src="/assets/images/positioning.jpg" alt="Trainer demonstrating client positioning" /></Reveal>
+              <Reveal className="faq-img"><img src="/assets/images/hijama-treatment.jpg" alt="Practitioner placing cups during a Hijama session" /></Reveal>
               <Reveal delay={120}>
                 <Accordion className="faq" numbered items={faqs.map((f) => ({ title: f.q, body: <p>{f.a}</p> }))} />
               </Reveal>

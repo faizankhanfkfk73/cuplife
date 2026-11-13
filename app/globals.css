@@ -118,7 +118,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 760px; color: var(--white); display: flex; align-items: flex-end; overflow: hidden; background: var(--olive); }
-.hero-bg { position: absolute; inset: 0; background: url("/assets/images/hero.jpg") 70% center / cover no-repeat; transform: scale(1.04); animation: heroZoom 2.4s cubic-bezier(.2,.8,.2,1) forwards; }
+.hero-bg { position: absolute; inset: 0; background: url("/assets/images/hijama-treatment.jpg") 70% center / cover no-repeat; transform: scale(1.04); animation: heroZoom 2.4s cubic-bezier(.2,.8,.2,1) forwards; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(42,50,36,.92) 0%, rgba(52,62,45,.78) 40%, rgba(60,70,52,.25) 75%, rgba(60,70,52,.1) 100%), linear-gradient(0deg, rgba(42,50,36,.55), rgba(42,50,36,0) 40%); }
 @keyframes heroZoom { to { transform: scale(1); } }
 .hero .container { position: relative; z-index: 2; padding-top: 150px; padding-bottom: 64px; }
@@ -243,8 +243,10 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 /* ---------- Trainer ---------- */
 .trainer { display: grid; grid-template-columns: 1fr 1.25fr; gap: 16px; }
 .t-card { position: relative; border-radius: var(--radius); overflow: hidden; min-height: 520px; background: var(--olive); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; color: var(--white); }
-.t-card .monogram { position: absolute; inset: 0; display: grid; place-items: center; font: italic 400 220px/1 var(--serif); color: rgba(252,222,147,.14); letter-spacing: -0.04em; user-select: none; }
-.t-card .ring { position: absolute; top: 32px; left: 32px; width: 92px; height: 92px; border-radius: 50%; background: var(--butter); color: var(--olive); display: grid; place-items: center; font: 400 38px/1 var(--serif); }
+.t-card .photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.t-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,.03) 30%, rgba(0,0,0,.2) 52%, rgba(0,0,0,.88) 100%); pointer-events: none; }
+.t-card .xp { z-index: 1; background: rgba(0,0,0,.25); }
+.t-card h3, .t-card .creds, .t-card .role { z-index: 1; }
 .t-card .xp { position: absolute; top: 32px; right: 32px; padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(255,255,255,.3); font-size: 13px; }
 .t-card h3 { position: relative; color: var(--white); font-size: 48px; line-height: 1; }
 .t-card .creds { position: relative; margin-top: 12px; font-size: 13px; letter-spacing: .18em; color: var(--butter); }
@@ -331,6 +333,26 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .fee-card .seats { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .fee-card .seats .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--butter); }
 .ok { grid-column: 1 / -1; background: rgba(252,222,147,.15); border: 1px solid rgba(252,222,147,.4); border-radius: 6px; padding: 12px 14px; color: var(--white); font-size: 14px; }
+.ok.err { background: rgba(255,120,100,.15); border-color: rgba(255,150,130,.5); }
+.secure { grid-column: 1 / -1; display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--white-80); margin: -2px 0 0; }
+.secure svg { flex: none; width: 16px; height: 16px; color: var(--butter); }
+form[aria-busy="true"] .btn { opacity: .7; pointer-events: none; }
+
+/* Payment status page (/payment/status) */
+.pay-status { min-height: 100vh; background: var(--olive); padding: 48px 0 80px; }
+.pay-status .logo { margin-bottom: 48px; }
+.pay-card { max-width: 640px; margin: 0 auto; background: var(--cream); border-radius: var(--radius); padding: 48px 40px; text-align: center; color: var(--text); }
+.pay-card .ic { width: 72px; height: 72px; border-radius: 50%; display: inline-grid; place-items: center; background: var(--butter); color: var(--olive); margin-bottom: 20px; }
+.pay-card.bad .ic, .pay-card.wait .ic { background: #f6d6cf; color: #a2402c; }
+.pay-card .ic svg { width: 34px; height: 34px; }
+.pay-card h1 { font-size: 40px; line-height: 1.1; }
+.pay-card > p { margin: 14px auto 0; max-width: 480px; font-size: 16px; color: var(--ink); }
+.pay-card dl { margin: 28px 0 0; border-top: 1px solid var(--line); text-align: left; }
+.pay-card dl div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.pay-card dt { color: var(--ink); font-size: 14px; }
+.pay-card dd { margin: 0; font-weight: 600; font-size: 14px; word-break: break-all; text-align: right; }
+.pay-card .btn-row { justify-content: center; margin-top: 32px; }
+@media (max-width: 560px) { .pay-card { padding: 36px 22px; } .pay-card h1 { font-size: 32px; } }
 
 /* ---------- Invest band (eventixx stats strip) ---------- */
 .invest { border-radius: 16px; background: var(--olive-deep); color: var(--white-80); padding: 64px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; position: relative; overflow: hidden; }
