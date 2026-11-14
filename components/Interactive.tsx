@@ -41,7 +41,7 @@ export function Nav() {
     <>
       <header className={`nav ${scrolled || open ? "scrolled" : ""}`}>
         <div className="container">
-          <a href="#top" className="logo" aria-label="Cupheal home"><Logo /><b>Cupheal</b></a>
+          <a href="#top" className="logo" aria-label="CupHeal home"><Logo /><b>CupHeal</b></a>
           <nav className="nav-links" aria-label="Primary">
             {nav.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
           </nav>
@@ -222,7 +222,7 @@ export function RegisterForm() {
       </div>
       <div className="field full">
         <Btn type="submit" block icon={payOnline ? "arrow" : "whatsapp"}>
-          {payOnline ? (busy ? "Opening payment…" : `Pay ${fee.price} & Reserve Seat`) : fee.primary}
+          {payOnline ? (busy ? "Opening payment…" : `Pay ${fee.advance} Advance & Reserve Seat`) : fee.primary}
         </Btn>
       </div>
       {payOnline && <p className="secure"><Icon name="shield" />Secure payment via Cashfree — UPI, cards, netbanking &amp; wallets</p>}

@@ -5,7 +5,7 @@ import { getOrder, isValidOrderId, type CashfreeOrder } from "@/lib/cashfree";
 import { details, whatsappLink } from "@/content/site";
 
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { title: "Payment Status — Cupheal", robots: { index: false } };
+export const metadata: Metadata = { title: "Payment Status — CupHeal", robots: { index: false } };
 
 type View = { tone: "ok" | "wait" | "bad"; title: string; body: string };
 
@@ -36,7 +36,7 @@ export default async function PaymentStatus({ searchParams }: { searchParams: { 
   return (
     <main className="pay-status">
       <div className="container">
-        <a href="/" className="logo"><Logo /><b>Cupheal</b></a>
+        <a href="/" className="logo"><Logo /><b>CupHeal</b></a>
         <div className={`pay-card ${v.tone}`}>
           <span className="ic"><Icon name={v.tone === "ok" ? "checkCircle" : "alert"} /></span>
           <h1>{v.title}</h1>

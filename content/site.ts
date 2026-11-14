@@ -294,24 +294,35 @@ export const reasons = [
   { name: "Certificate", body: "Course completion certificate on successful completion." },
 ];
 
+export const COURSE_DATES = "22, 23 & 25 December 2026";
+
 export const details = [
   { k: "Course", v: "3-Day Offline Hijama Training Program" },
   { k: "Mode", v: "Offline / Classroom Training" },
-  { k: "Date", v: "[INSERT DATE]" },
+  { k: "Date", v: COURSE_DATES },
   { k: "Location", v: "[INSERT CITY & VENUE]" },
   { k: "Timing", v: "[INSERT TIMING]" },
   { k: "Batch Size", v: "Limited Seats" },
   { k: "Certificate", v: "Course Completion Certificate" },
 ];
 
-// Course fee in rupees, charged through Cashfree. Set to null to turn off online payment
-// (the server then refuses to create orders and the form falls back to WhatsApp).
-export const COURSE_FEE_INR = 2000 as number | null;
+// Full course fee in rupees (shown on the page; the balance is paid separately).
+export const COURSE_TOTAL_INR = 10000;
+
+// Advance amount in rupees, charged through Cashfree to reserve a seat. Set to null to turn off
+// online payment (the server then refuses to create orders and the form falls back to WhatsApp).
+export const COURSE_FEE_INR = 3000 as number | null;
+
+const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 export const fee = {
   tag: "Course Fee",
   label: "Special Training Fee",
-  price: COURSE_FEE_INR ? `₹${COURSE_FEE_INR.toLocaleString("en-IN")}` : "₹[FINAL PRICE]",
+  price: inr(COURSE_TOTAL_INR),
+  advance: COURSE_FEE_INR ? inr(COURSE_FEE_INR) : null,
+  advanceNote: COURSE_FEE_INR
+    ? `Pay ${inr(COURSE_FEE_INR)} advance now to reserve your seat. Balance ${inr(COURSE_TOTAL_INR - COURSE_FEE_INR)} is payable before the training.`
+    : null,
   note: "Limited seats available for this batch.",
   primary: "Reserve My Seat",
   secondary: "WhatsApp To Register",

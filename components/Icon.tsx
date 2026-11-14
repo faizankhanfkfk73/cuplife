@@ -161,7 +161,7 @@ export default function Icon({ name, className }: { name: string; className?: st
 }
 
 export function Logo() {
-  // Cup silhouette with a drop: the Cupheal mark, drawn in Phyco's olive/butter.
+  // Cup silhouette with a drop: the CupHeal mark, drawn in Phyco's olive/butter.
   return (
     <svg viewBox="0 0 40 40" aria-hidden="true">
       <rect width="40" height="40" rx="9" fill="#fcde93" />

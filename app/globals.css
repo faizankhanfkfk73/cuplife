@@ -330,6 +330,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .field input::placeholder { color: rgba(255,255,255,.5); }
 .field input:focus, .field select:focus { border-color: var(--butter); }
 .field select option { color: var(--text); }
+.fee-card .advance { font-size: 14px; line-height: 1.5; color: var(--white-80); margin: 0 0 10px; }
 .fee-card .seats { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .fee-card .seats .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--butter); }
 .ok { grid-column: 1 / -1; background: rgba(252,222,147,.15); border: 1px solid rgba(252,222,147,.4); border-radius: 6px; padding: 12px 14px; color: var(--white); font-size: 14px; }

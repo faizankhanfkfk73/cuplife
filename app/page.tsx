@@ -1,7 +1,7 @@
 import Icon, { Logo } from "@/components/Icon";
 import { Accordion, Btn, DayTabs, Nav, RegisterForm, Reveal } from "@/components/Interactive";
 import {
-  approach, audience, bonuses, clientHandling, days, details, disclaimer, faqs, fee, finale, hero,
+  COURSE_DATES, approach, audience, bonuses, clientHandling, days, details, disclaimer, faqs, fee, finale, hero,
   includes, invest, marketing, nav, objective, questions, reasons, selfEmployment, trainer, whatsappLink,
 } from "@/content/site";
 
@@ -304,6 +304,7 @@ export default function Home() {
               <Reveal delay={120} className="fee-card">
                 <span className="badge">{fee.label}</span>
                 <div className="price">{fee.price}<small>/ 3-Day Program</small></div>
+                {fee.advanceNote && <p className="advance">{fee.advanceNote}</p>}
                 <p className="seats"><span className="dot" />{fee.note}</p>
                 <RegisterForm />
                 <Btn href={whatsappLink()} variant="ghost wa" block icon="whatsapp">{fee.secondary}</Btn>
@@ -387,7 +388,7 @@ export default function Home() {
           </Reveal>
           <div className="foot-grid">
             <div className="about-f">
-              <a href="#top" className="logo"><Logo /><b>Cupheal</b></a>
+              <a href="#top" className="logo"><Logo /><b>CupHeal</b></a>
               <p>3-Day Offline Hijama Training Program — practical training, real guidance and safety-first learning.</p>
             </div>
             <div>
@@ -399,7 +400,7 @@ export default function Home() {
               <ul>
                 <li>Offline / Classroom Training</li>
                 <li>[INSERT CITY &amp; VENUE]</li>
-                <li>[INSERT DATE] · [INSERT TIMING]</li>
+                <li>{COURSE_DATES} · [INSERT TIMING]</li>
               </ul>
             </div>
             <div>
@@ -412,7 +413,7 @@ export default function Home() {
             </div>
           </div>
           <div className="foot-bottom">
-            <span>© {new Date().getFullYear()} Cupheal. All Rights Reserved.</span>
+            <span>© {new Date().getFullYear()} CupHeal. All Rights Reserved.</span>
             <span>The course certificate is not a medical license or practice authorization.</span>
           </div>
         </div>

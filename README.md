@@ -1,4 +1,4 @@
-# Cupheal — 3-Day Offline Hijama Training landing page
+# CupHeal — 3-Day Offline Hijama Training landing page
 
 Next.js 14 (App Router, TypeScript, plain CSS). Run: `npm install`, `npm run build`, `npm start` → http://localhost:3060
 
@@ -14,8 +14,8 @@ All copy is in `content/site.ts`, taken from `3-Day Offline Hijama Training Land
 
 Fill these in before launch (all copy is in English):
 - `WHATSAPP_NUMBER` in `content/site.ts` (every WhatsApp button and the registration form use it)
-- `[INSERT DATE]`, `[INSERT CITY & VENUE]`, `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
-- `COURSE_FEE_INR` in `content/site.ts` (the fee in rupees; it sets the displayed price and the amount Cashfree charges)
+- `COURSE_DATES`, `[INSERT CITY & VENUE]`, `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
+- `COURSE_TOTAL_INR` in `content/site.ts` (the full course fee shown on the page) and `COURSE_FEE_INR` (the advance Cashfree charges to reserve a seat)
 
 ## Images
 Hijama photos (`hijama-equipment.jpg`, `hijama-training.jpg`, `hijama-treatment.jpg`) and the trainer portrait (`faizan-uddin-khan.jpg`) are in `public/assets/images/`, taken from the Cupheal-Hijama-Landing-Page package and compressed. The Hijama illustrations are AI-generated.

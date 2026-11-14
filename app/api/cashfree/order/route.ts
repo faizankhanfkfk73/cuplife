@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
       amount: COURSE_FEE_INR,
       customer: { id: `cust_${phone}`, name, phone, email: email || undefined },
       returnUrl: `${siteOrigin(req)}/payment/status?order_id={order_id}`,
-      note: "3-Day Offline Hijama Training — seat reservation",
+      note: "3-Day Offline Hijama Training — seat reservation advance",
       tags: { city: city || "-", background: background || "-" },
     });
     return NextResponse.json({ orderId: order.order_id, paymentSessionId: order.payment_session_id });
