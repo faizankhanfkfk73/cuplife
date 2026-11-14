@@ -14,7 +14,7 @@ All copy is in `content/site.ts`, taken from `3-Day Offline Hijama Training Land
 
 Fill these in before launch (all copy is in English):
 - `WHATSAPP_NUMBER` in `content/site.ts` (every WhatsApp button and the registration form use it)
-- `COURSE_DATES`, `[INSERT CITY & VENUE]`, `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
+- `COURSE_DATES`, location (Delhi), `[INSERT TIMING]` (in `details`, and in the footer in `app/page.tsx`)
 - `COURSE_TOTAL_INR` in `content/site.ts` (the full course fee shown on the page) and `COURSE_FEE_INR` (the advance Cashfree charges to reserve a seat)
 
 ## Images

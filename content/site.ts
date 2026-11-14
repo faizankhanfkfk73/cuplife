@@ -300,7 +300,7 @@ export const details = [
   { k: "Course", v: "3-Day Offline Hijama Training Program" },
   { k: "Mode", v: "Offline / Classroom Training" },
   { k: "Date", v: COURSE_DATES },
-  { k: "Location", v: "[INSERT CITY & VENUE]" },
+  { k: "Location", v: "Delhi" },
   { k: "Timing", v: "[INSERT TIMING]" },
   { k: "Batch Size", v: "Limited Seats" },
   { k: "Certificate", v: "Course Completion Certificate" },

@@ -399,7 +399,7 @@ export default function Home() {
               <h4>Batch Details</h4>
               <ul>
                 <li>Offline / Classroom Training</li>
-                <li>[INSERT CITY &amp; VENUE]</li>
+                <li>Delhi</li>
                 <li>{COURSE_DATES} · [INSERT TIMING]</li>
               </ul>
             </div>
