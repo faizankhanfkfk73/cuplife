@@ -301,7 +301,6 @@ export const details = [
   { k: "Mode", v: "Offline / Classroom Training" },
   { k: "Date", v: COURSE_DATES },
   { k: "Location", v: "Delhi" },
-  { k: "Timing", v: "[INSERT TIMING]" },
   { k: "Batch Size", v: "Limited Seats" },
   { k: "Certificate", v: "Course Completion Certificate" },
 ];

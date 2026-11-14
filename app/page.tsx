@@ -400,7 +400,7 @@ export default function Home() {
               <ul>
                 <li>Offline / Classroom Training</li>
                 <li>Delhi</li>
-                <li>{COURSE_DATES} · [INSERT TIMING]</li>
+                <li>{COURSE_DATES}</li>
               </ul>
             </div>
             <div>
