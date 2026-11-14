@@ -1,4 +1,4 @@
-# CupHeal — 3-Day Offline Hijama Training landing page
+# CupLife — 3-Day Offline Hijama Training landing page
 
 Next.js 14 (App Router, TypeScript, plain CSS). Run: `npm install`, `npm run build`, `npm start` → http://localhost:3060
 

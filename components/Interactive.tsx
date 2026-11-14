@@ -41,7 +41,7 @@ export function Nav() {
     <>
       <header className={`nav ${scrolled || open ? "scrolled" : ""}`}>
         <div className="container">
-          <a href="#top" className="logo" aria-label="CupHeal home"><Logo /><b>CupHeal</b></a>
+          <a href="#top" className="logo" aria-label="CupLife home"><Logo /><b>CupLife</b></a>
           <nav className="nav-links" aria-label="Primary">
             {nav.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
           </nav>

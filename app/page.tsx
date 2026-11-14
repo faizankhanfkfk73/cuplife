@@ -388,7 +388,7 @@ export default function Home() {
           </Reveal>
           <div className="foot-grid">
             <div className="about-f">
-              <a href="#top" className="logo"><Logo /><b>CupHeal</b></a>
+              <a href="#top" className="logo"><Logo /><b>CupLife</b></a>
               <p>3-Day Offline Hijama Training Program — practical training, real guidance and safety-first learning.</p>
             </div>
             <div>
@@ -413,7 +413,7 @@ export default function Home() {
             </div>
           </div>
           <div className="foot-bottom">
-            <span>© {new Date().getFullYear()} CupHeal. All Rights Reserved.</span>
+            <span>© {new Date().getFullYear()} CupLife. All Rights Reserved.</span>
             <span>The course certificate is not a medical license or practice authorization.</span>
           </div>
         </div>

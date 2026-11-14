@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CupHeal — 3-Day Offline Hijama Training Program",
+  title: "CupLife — 3-Day Offline Hijama Training Program",
   description:
     "An intensive 3-day offline Hijama training: fundamentals, anatomy, practical techniques, client handling and self-employment guidance. Limited seats.",
   icons: { icon: "/icon.svg" },
